@@ -1,0 +1,2 @@
+# scopusWidgets
+Integration code snippets
