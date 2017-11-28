@@ -3,6 +3,6 @@ This repository provides examples of integration with Scopus through simple HTML
 
 These code snippets can be integrated in external web sites such as Institution and Library portals. They use Scopus standard inward links to search in Scopus.
 
-Screenshot of the document search widget provided in this repository.
+Screenshot of the document search widget provided in this repository; in this example a user is entering a search query "artificial life" which will open Scopus document search.
 
 ![](/screenshots/documentSearch.png?raw=true "")
