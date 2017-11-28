@@ -1,6 +1,4 @@
 # scopusWidgets
-Integration code snippets
+This repository provides examples of integration with Scopus through simple HTML, Javascript and CSS based widgets.
 
-Code snippets to integrate in external web sites such as Institution and Library portals.
-
-Uses Scopus inward links to search in Scopus.
+These code snippets can be integrated in external web sites such as Institution and Library portals. They use Scopus standard inward links to search in Scopus.
