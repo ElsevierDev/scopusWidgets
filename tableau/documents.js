@@ -19,7 +19,7 @@
         }, {
             id: "authname",
             dataType: tableau.dataTypeEnum.string
-          }, {
+        }, {
               id: "authid",
               dataType: tableau.dataTypeEnum.string
         }, {
@@ -42,21 +42,36 @@
 
         var connectionData = JSON.parse(tableau.connectionData)
 
+        // Adding a default Title, Abstract, Key field selector
         var query = ''
         if (connectionData.searchQuery.indexOf('(') == -1)
           query = encodeURIComponent("TITLE-ABS-KEY(" + connectionData.searchQuery + ')')
         else
           query = encodeURIComponent(connectionData.searchQuery)
 
+        // Retrieving user API Key
         var key = connectionData.apiKey
-        var connectionUrl = 'https://api.elsevier.com:443/content/search/scopus?query=' + query + '&apiKey=' + key
 
+        // Checking if an authentication Token has been passed with the API KEY
+        // Useful only for Authentication API users
+        var token = null
+        key = key.replace(/\s\s+/g, ' ');
+        console.log(key);
+        if (key.includes(' ')) {
+          var tab = key.split(' ')
+          console.log(tab);
+          key = tab[0]
+          token = tab[1]
+        }
+
+        // Building URL base with query and API KEY
+        var connectionUrl = 'https://api.elsevier.com:443/content/search/scopus?query=' + query + '&apiKey=' + key
         console.log(connectionUrl)
 
         var pace = 200
         var max = parseInt(connectionData.maxDocs)
         var cursor = '*'
-        _jsonpAjax4(connectionUrl, parseResponse, table, doneCallback, 0, pace, max, cursor)
+        _jsonpAjax4(connectionUrl, parseResponse, table, doneCallback, 0, pace, max, cursor, token)
     }
 
     tableau.registerConnector(myConnector);
@@ -72,7 +87,7 @@ function copySimpleDictionary(mainObj) {
   return objCopy;
 }
 
-function parseResponse(url, successCallback, table, response, doneCallback, start, pace, max) {
+function parseResponse(url, successCallback, table, response, doneCallback, start, pace, max, token) {
     var tableData = [];
     var bombs = [{field: 'author', selectors: ['authname', 'authid']}]
 
@@ -123,29 +138,31 @@ function parseResponse(url, successCallback, table, response, doneCallback, star
     cursor = response['search-results']['cursor']['@next']
     if (start + reslength < restotal && start + reslength + pace <= max) {
         console.log("Iterating... cursor: " + cursor);
-        _jsonpAjax4(url, successCallback, table, doneCallback, start + pace, pace, max, cursor)
+        _jsonpAjax4(url, successCallback, table, doneCallback, start + pace, pace, max, cursor, token)
     } else {
       console.log('Done getting data!')
       doneCallback();
     }
 }
 
-function _jsonpAjax4(url, successCallback, table, doneCallback, start, pace, max, cursor) {
+function _jsonpAjax4(url, successCallback, table, doneCallback, start, pace, max, cursor, token) {
    var finalurl = url + '&field=eid,source-id,dc:title,dc:creator,citedby-count,prism:aggregationType,author'
         + '&sort=citedby-count'
-        // + "&start=" + start + "&count=" + pace
         + "&cursor=" + encodeURIComponent(cursor) + "&count=" + pace
+
+    // If Authentication API is used and Token value passed
+    var headers = {}
+    if (token != null)
+      headers['X-ELS-Authtoken'] = token
 
     $.ajax({
         url: finalurl,
         crossDomain: true,
-        headers: {
-//             'X-ELS-Authtoken': ''
-        },
+        headers: headers,
         data: {
         },
         success: function (response) {
-            successCallback(url, successCallback, table, response, doneCallback, start, pace, max)
+            successCallback(url, successCallback, table, response, doneCallback, start, pace, max, token)
         },
         error: function (xhr, status, error) {
             console.log(xhr.responseText);
