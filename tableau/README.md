@@ -2,7 +2,7 @@ This folder contains a Tableau Web Data Connector to communicate with Scopus API
 
 Requirements:
 - A Tableau license allowing you to use Web Data Connectors
-- A Scopus API Key. Available on dev.elsevier.com
+- A Scopus API Key. Available on https://dev.elsevier.com/ 
 - Optional: a web server so you can host this file on your own server (useful if you want to do things like hardcoding API Key)
 
 Steps:
