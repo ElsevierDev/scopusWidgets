@@ -5,4 +5,4 @@ These code snippets can be integrated in external web sites such as Institution 
 
 Screenshot of the document search widget provided in this repository; in this example a user is entering a search query "artificial life" which will open Scopus document search.
 
-![](/screenshots/documentSearch.png?raw=true "")
+![](/htmlSnippets/screenshots/documentSearch.png?raw=true "")
