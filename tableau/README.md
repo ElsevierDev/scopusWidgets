@@ -11,9 +11,9 @@ Steps:
 - Select "Web Data Connector"
 - Enter https://elsevierdev.github.io/scopusWidgets/tableau/documents.html (or your own hosted file) in the address bar
 - Fill in parameters:
- - document search query
- - number of documents retrieved (could take several minutes if you ask for a lot of data)
- - API key
+-- document search query
+-- number of documents retrieved (could take several minutes if you ask for a lot of data)
+-- API key
 - Click on "Get Data"
 - Click on "Update Now"
 - Have fun building your own Tableau Widgets and Dashboard leveraging Scopus data!
