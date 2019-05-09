@@ -14,7 +14,9 @@ Steps:
 ![](/tableau/screenshots/tableauConfiguration.png?raw=true "")
 
 - Fill in parameters:
-  - document search query
+  - document search query:
+    - it can be a simple sequence of words like **deep learning**
+    - or using Scopus advanced search syntax like **TITLE("deep learning") AND PUBYEAR > 2010**
   - number of documents retrieved (could take several minutes if you ask for a lot of data)
   - API key
 - Click on "Get Data"
