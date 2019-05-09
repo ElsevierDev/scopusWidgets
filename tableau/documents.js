@@ -56,10 +56,8 @@
         // Useful only for Authentication API users
         var token = null
         key = key.replace(/\s\s+/g, ' ');
-        console.log(key);
         if (key.includes(' ')) {
           var tab = key.split(' ')
-          console.log(tab);
           key = tab[0]
           token = tab[1]
         }
