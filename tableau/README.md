@@ -23,4 +23,4 @@ Steps:
 
 The following screenshot shows a Tableau Dashboard which uses this Web Data Connector to analyze key impactful authors and main subject areas based on a search query:
 
-![](/tableau/screenshots/tableauConfiguration.png?raw=true "")
+![](/tableau/screenshots/tableauDashboard.png?raw=true "")
