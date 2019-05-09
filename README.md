@@ -1,8 +1,6 @@
-# scopusWidgets
-This repository provides examples of integration with Scopus through simple HTML, Javascript and CSS based widgets.
+# Scopus Widgets
+This repository provides examples of integration with Scopus using API or simple URL inward links.
 
-These code snippets can be integrated in external web sites such as Institution and Library portals. They use Scopus standard inward links to search in Scopus.
-
-Screenshot of the document search widget provided in this repository; in this example a user is entering a search query "artificial life" which will open Scopus document search.
-
-![](/screenshots/documentSearch.png?raw=true "")
+They are currently organized into two groups:
+* **inwardSearch**: contains an example of HTML snippet to integrate in any web site allowing users to trigger a Scopus document search, for example from a Library Portal
+* **tableau**: contains a Tableau software component called "Web Data Connector" allowing users to pull data from Scopus API directly in their Tableau projects
