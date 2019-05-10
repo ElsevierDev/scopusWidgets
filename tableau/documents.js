@@ -56,7 +56,9 @@
         // Useful only for Authentication API users
         var token = null
         key = key.replace(/\s\s+/g, ' ');
-        if (key.includes(' ')) {
+        // ES5 compatibility
+        if (key.indexOf(' ') !== -1) {
+        // if (key.includes(' ')) {
           var tab = key.split(' ')
           key = tab[0]
           token = tab[1]
